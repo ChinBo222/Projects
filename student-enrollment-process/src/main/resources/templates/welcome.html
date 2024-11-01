@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<h1 th:text="${welcomeMessage}">Welcome!</h1>
+<!-- This is the actual main homepage after successful log in. There should be links out to other pages for different functions-->
+<!-- Add any additional content for logged-in users here -->
+
+
+<h1>HomePage</h1>
+
+<!-- Link to Program Details Page -->
+<p><a th:href="@{/programs}">View Program Details</a></p>
+<p><a th:href="@{/editStudent}">Edit Your Information</a></p>
+<div th:if="${enrollmentSuccess}" th:text="${enrollmentSuccess}"></div>
+<!-- Display success message if it exists -->
+<div th:if="${successMsg}" style="color: green;" th:text="${successMsg}"></div>
+</body>
+</html>

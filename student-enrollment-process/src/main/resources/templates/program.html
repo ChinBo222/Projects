@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Programs</title>
+</head>
+<body>
+<h1>Programs Offered</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Program Code</th>
+        <th>Program Name</th>
+        <th>Duration</th>
+        <th>Fee</th>
+        <th>Professor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="program : ${programs}">
+        <td th:text="${program.programCode}"></td>
+        <td th:text="${program.programName}"></td>
+        <td th:text="${program.duration}"></td>
+        <td th:text="${program.fee}"></td>
+        <td th:text="${program.professor}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h1>Enrollment</h1>
+<form action="#" th:action="@{/enroll}" method="post">
+    <label for="programCode">Select Program ID:</label>
+    <select id="programCode" name="programCode" required>
+        <option th:each="program : ${programs}" th:value="${program.programCode}" th:text="${program.programCode}"></option>
+    </select>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required> <!-- Username input field -->
+    <label for="creditCard">Credit Card Number:</label>
+    <input type="text" id="creditCard" name="creditCard" required>
+
+    <button type="submit">Enroll</button>
+</form>
+
+<!-- Display any success or error messages -->
+
+<div th:if="${enrollmentError}" th:text="${enrollmentError}"></div>
+
+</body>
+</html>
